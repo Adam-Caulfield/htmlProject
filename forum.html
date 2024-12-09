@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Favorite Song</title>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.3/dist/semantic.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.3/dist/semantic.min.js"></script>
+
+    <style>
+      .error-message {
+        color: red;
+        font-size: 0.9em;
+        display: none;
+        margin-top: 5px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="ui grid container">
+      <header class="sixteen wide column">
+        <h2 class="ui icon header">
+            <i class="headphones icon"></i>
+            <div class="content">
+              Favorite Song
+              <div class="sub header">Fill out the form below.</div>
+            </div>
+          </h2>
+      </header>
+      <main class="ui grid container">
+        <section class="sixteen wide column">
+
+    
+
+
+
+            <form class="ui form" action="favorite_song.html" target="_blank" method="POST" id="song">
+                <div class="field">
+
+                  <label for="songName">Name of song</label>
+                    <input
+                     type="text"
+                      name="songName"
+                      id="songName"
+                      required
+                      pattern="^[A-Z][a-z]+([ '-][A-Z][a-z]+)*$"
+                      title="Song Name "
+                      >
+                
+                </div>
+                
+
+
+
+            <div class="field">
+              <label for="emailAdress">please give me your email to contact you for further discussion</label>
+              <input
+                type="email"
+                name="email"
+                id="emailAdress"
+                required
+                pattern="^[^ ]+@[^ ]+\.[a-z]{2,3}$"
+                title="Please enter a valid email address."
+              >
+              <p class="error-message" id="email-error">Please enter a valid email address.</p>
+            </div>
+
+            <div class="field">
+              <label for="song_lenght">Lenght of song?</label>
+              <input
+                type="number"
+                name="song_lenght"
+                id="song_lenght"
+              >
+            </div>
+            
+            
+            <p>if you want to provide any additional  info about the song</p>
+            <div class="field">
+              <label for="additional">please type here:</label>
+              <input
+                type="text"
+                name="additional"
+                id="additional"
+              >
+            </div>
+
+            <div class="field">
+
+            
+
+              <button class="ui button" type="submit" class="huge ui button primary">Send us the info</button>
+              <button class="ui button" type="reset">Clear the info</button>
+            </div>
+          </form>
+        </section>
+      </main>
+    </div>
+  </body>
+  </html>
+  <script>
+$('.ui.form')
+  .form({
+    fields: {
+      name: {
+        identifier: 'name',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'Please enter your name'
+          }
+        ]
+      },
+      skills: {
+        identifier: 'skills',
+        rules: [
+          {
+            type   : 'minCount[2]',
+            prompt : 'Please select at least two skills'
+          }
+        ]
+      },
+      gender: {
+        identifier: 'gender',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'Please select a gender'
+          }
+        ]
+      },
+      username: {
+        identifier: 'username',
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'Please enter a username'
+          }
+        ]
+      },
+      password: {
+        identifier: 'password',
+        errorLimit: 1,
+        rules: [
+          {
+            type   : 'empty',
+            prompt : 'Please enter a password'
+          },
+          {
+            type   : 'minLength[6]',
+            prompt : 'Your password must be at least {ruleValue} characters'
+          }
+        ]
+      },
+      terms: {
+        identifier: 'terms',
+        rules: [
+          {
+            type   : 'checked',
+            prompt : 'You must agree to the terms and conditions'
+          }
+        ]
+      }
+    }
+  }
+)
+

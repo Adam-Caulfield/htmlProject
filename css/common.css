@@ -12,7 +12,7 @@ th, td {
 }
 
 th {
-    background-color: #057aee;
+    background-color: #fefefe;
     color: rgb(255, 255, 255);
 }
 
@@ -31,7 +31,7 @@ tr:hover {
 
 html, body {
     background-color: rgb(9, 192, 73);
-    color: navy;
+    color: rgb(244, 244, 249);
     margin: 0;
     padding: 0;
     width: 100%;
@@ -62,8 +62,9 @@ nav {
 }
 
 nav a:link,
-nav a:visited {
-    background-color: #4D7298;
+a:visited {
+    color: #ddd;
+    background-color: #0080ff;
     border: 2px solid #77A6B6;
     border-radius: .5em;
     color: #fff;
