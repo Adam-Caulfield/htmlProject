@@ -30,8 +30,13 @@ tr:hover {
 }
 
 html, body {
+<<<<<<< HEAD
     background-color: rgb(9, 192, 73);
     color: rgb(244, 244, 249);
+=======
+    background-color: rgb(255, 255, 255);
+    color: navy;
+>>>>>>> ccf38c3fd6c49d722d5a6a51dabb9c4fb90155a9
     margin: 0;
     padding: 0;
     width: 100%;
