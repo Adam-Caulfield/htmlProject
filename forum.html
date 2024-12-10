@@ -7,14 +7,6 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.3/dist/semantic.min.css">
     <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.3/dist/semantic.min.js"></script>
 
-    <style>
-      .error-message {
-        color: red;
-        font-size: 0.9em;
-        display: none;
-        margin-top: 5px;
-      }
-    </style>
   </head>
 
   <body>
@@ -31,52 +23,22 @@
       <main class="ui grid container">
         <section class="sixteen wide column">
 
-    
+            <form class="ui form">
+              <div class="field">
+                <label>Favorite song name</label>
+                <input type="text" name="songName" placeholder="Song name">
+              </div>
 
+              <div class="field">
+                <label>Email:</label>
+                <input type="text" name="email" placeholder="email">
+              </div>
+              
 
-
-            <form class="ui form" method="POST" id="song">
-                <div class="field">
-
-                  <label for="songName">Name of song</label>
-                    <input
-                     type="text"
-                      name="songName"
-                      id="songName"
-                      required
-                      pattern="^[A-Z][a-z]+([ '-][A-Z][a-z]+)*$"
-                      title="Song Name "
-                      >
-                
-                </div>
-                
-
-
-
-            <div class="field">
-              <label for="emailAdress">please give me your email to contact you for further discussion</label>
-              <input
-                type="email"
-                name="email"
-                id="emailAdress"
-                required
-                pattern="^[^ ]+@[^ ]+\.[a-z]{2,3}$"
-                title="Please enter a valid email address."
-              >
-              <p class="error-message" id="email-error">Please enter a valid email address.</p>
-            </div>
-
-            <div class="field">
-              <label for="song_lenght">Lenght of song?</label>
-              <input
-                type="number"
-                name="song_lenght"
-                id="song_lenght"
-              >
-            </div>
+  
+           
             
-            
-            <p>if you want to provide any additional  info about the song</p>
+            <p>if you want to provide any additional info about the song</p>
             <div class="field">
               <label for="additional">please type here:</label>
               <input
@@ -87,10 +49,7 @@
             </div>
 
             <div class="field">
-
-            
-
-              <button class="ui button" type="submit" class="huge ui button primary"> <a href="favorite_song.html"target ="_blank">send response </a></button>
+              <a href = "favorite_song.html" target="_blank"><button class="ui button primary" type="button" onclick="navigateToSong()">Submit</button></a>
               <button class="ui button" type="reset">Clear the info</button>
             </div>
           </form>
@@ -98,71 +57,37 @@
       </main>
     </div>
   </body>
-  </html>
-  <script>
+</html>
+<script>
+  function navigateToSong(){
+    window.location.href="favorite_song.html"
+  }
 $('.ui.form')
   .form({
     fields: {
-      name: {
-        identifier: 'name',
+      songName: {
+        identifier: 'songName',
         rules: [
           {
             type   : 'empty',
-            prompt : 'Please enter your name'
+            prompt : 'Please enter your favorite song name'
           }
         ]
       },
-      skills: {
-        identifier: 'skills',
-        rules: [
-          {
-            type   : 'minCount[2]',
-            prompt : 'Please select at least two skills'
-          }
-        ]
-      },
-      gender: {
-        identifier: 'gender',
+      email: {
+        identifier: 'email',
         rules: [
           {
             type   : 'empty',
-            prompt : 'Please select a gender'
-          }
-        ]
-      },
-      username: {
-        identifier: 'username',
-        rules: [
-          {
-            type   : 'empty',
-            prompt : 'Please enter a username'
-          }
-        ]
-      },
-      password: {
-        identifier: 'password',
-        errorLimit: 1,
-        rules: [
-          {
-            type   : 'empty',
-            prompt : 'Please enter a password'
+            prompt : 'Please enter an email'
           },
           {
-            type   : 'minLength[6]',
-            prompt : 'Your password must be at least {ruleValue} characters'
+            type   : 'regExp',
+            value  : /^[^ ]+@[^ ]+\.[a-z]{2,3}$/,
+            prompt : 'Please enter a valid email address'
           }
         ]
       },
-      terms: {
-        identifier: 'terms',
-        rules: [
-          {
-            type   : 'checked',
-            prompt : 'You must agree to the terms and conditions'
-          }
-        ]
-      }
     }
-  }
-)
-
+  });
+</script>
