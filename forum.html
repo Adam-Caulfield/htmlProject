@@ -6,71 +6,59 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.7.1/dist/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.3/dist/semantic.min.css">
     <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.9.3/dist/semantic.min.js"></script>
-
   </head>
 
   <body>
     <div class="ui grid container">
       <header class="sixteen wide column">
         <h2 class="ui icon header">
-            <i class="headphones icon"></i>
-            <div class="content">
-              Favorite Song
-              <div class="sub header">Fill out the form below.</div>
-            </div>
-          </h2>
+          <i class="headphones icon"></i>
+          <div class="content">
+            Favorite Song
+            <div class="sub header">Fill out the form below.</div>
+          </div>
+        </h2>
       </header>
       <main class="ui grid container">
         <section class="sixteen wide column">
-
-            <form class="ui form">
-              <div class="field">
-                <label>Favorite song name</label>
-                <input type="text" name="songName" placeholder="Song name">
-              </div>
-
-              <div class="field">
-                <label>Email:</label>
-                <input type="text" name="email" placeholder="email">
-              </div>
-              
-
-  
-           
-            
-            <p>if you want to provide any additional info about the song</p>
+          <form class="ui form" id="favoriteSongForm">
             <div class="field">
-              <label for="additional">please type here:</label>
-              <input
-                type="text"
-                name="additional"
-                id="additional"
-              >
+              <label for="songName">Favorite song name</label>
+              <input type="text" name="songName" id="songName" placeholder="Song name">
             </div>
 
             <div class="field">
-              <a href = "favorite_song.html" target="_blank"><button class="ui button primary" type="button" onclick="navigateToSong()">Submit</button></a>
+              <label for="email">Email:</label>
+              <input type="text" name="email" id="email" placeholder="email">
+            </div>
+
+            <p>If you want to provide any additional info about the song:</p>
+            <div class="field">
+              <label for="additional">Please type here:</label>
+              <input type="text" name="additional" id="additional">
+            </div>
+
+            <div class="field">
+              <button class="ui button primary" type="button" id="submitButton">Submit</button>
               <button class="ui button" type="reset">Clear the info</button>
             </div>
           </form>
         </section>
       </main>
     </div>
+
   </body>
-</html>
-<script>
-  function navigateToSong(){
-    window.location.href="favorite_song.html"
-  }
-$('.ui.form')
-  .form({
+    <script>
+    //mostly edited code from formantic ui link in rubric
+  // Initialize Semantic UI form validation
+  $('.ui.form').form({
     fields: {
       songName: {
         identifier: 'songName',
         rules: [
           {
-            type   : 'empty',
-            prompt : 'Please enter your favorite song name'
+            type: 'empty',
+            prompt: 'Please enter your favorite song name'
           }
         ]
       },
@@ -78,16 +66,28 @@ $('.ui.form')
         identifier: 'email',
         rules: [
           {
-            type   : 'empty',
-            prompt : 'Please enter an email'
+            type: 'empty',
+            prompt: 'Please enter an email'
           },
           {
-            type   : 'regExp',
-            value  : /^[^ ]+@[^ ]+\.[a-z]{2,3}$/,
-            prompt : 'Please enter a valid email address'
+            type: 'regExp',
+            value: /^[^ ]+@[^ ]+\.[a-z]{2,3}$/,
+            prompt: 'Please enter a valid email address'
           }
         ]
-      },
+      }
+    }
+  });
+
+  // Handle form submission and redirection
+  $('#submitButton').on('click', function () {
+    // Check if the form is valid
+    if ($('.ui.form').form('is valid')) {
+      window.location.href = "favorite_song.html";
+    } else {
+      // Handle invalid form case
+      alert("Please ensure your email is valid and the name of the song is entered.");
     }
   });
 </script>
+</html>
